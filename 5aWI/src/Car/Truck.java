@@ -19,4 +19,10 @@ public class Truck extends Car {
     public void setTrailer(String trailer) {
         this.trailer = trailer;
     }
+
+    @Override
+    public void drive(int speed) {
+        System.out.println("I am driving");
+        //super.drive(speed);
+    }
 }

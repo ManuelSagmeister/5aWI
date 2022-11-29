@@ -14,6 +14,7 @@ public class Main {
 
         Truck tr1 = new Truck(e1, 20, 10);
         System.out.println(tr1.getFuelConsumption());
+        tr1.drive(10);
     }
 }
 
