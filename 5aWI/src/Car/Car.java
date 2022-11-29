@@ -12,20 +12,17 @@ public class Car {
     private String serialNumber;
     private String color;
 
-    public Car(Engine engine, int fuelConsumption, Tank fuelAmount, String brand, String serialNumber, Wheels wheels, Mirror mirror) {
+    public Car(Engine engine, int fuelConsumption, int fuelAmount) {
         this.engine = engine;
         this.fuelConsumption = fuelConsumption;
         this.brand = brand;
-        this.serialNumber = serialNumber;
-        this.fuelAmount = fuelAmount.getFuelAmount();
-        this.wheels = wheels;
-        this.mirror = mirror;
+        this.fuelAmount = fuelAmount;
     }
 
     public void attributes() {
         PrintStream var10000 = System.out;
         int var10001 = this.engine.getHorsePower();
-        var10000.println("Horsepower: " + var10001 + "\nFuel Consumption: " + this.fuelConsumption + "\nFuel Amount: " + this.fuelAmount + "\nWheels info: " + this.wheels.getWheels() + "\nMirror size: " + this.mirror.getMirrorSize());
+        var10000.println("Horsepower: " + var10001 + "\nFuel Consumption: " + this.fuelConsumption + "\nFuel Amount: " + this.fuelAmount);
     }
 
     public void drive(int speed) {
