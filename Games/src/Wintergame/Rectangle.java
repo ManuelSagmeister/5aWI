@@ -1,12 +1,11 @@
 package Wintergame;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.tests.AnimationTest;
 
-public class Maingame extends BasicGame {
+public class Rectangle extends BasicGame {
 
-    private int x,y;
-    public Maingame(String title) {
+    private float x,y;
+    public Rectangle(String title) {
         super(title);
     }
 
@@ -19,17 +18,24 @@ public class Maingame extends BasicGame {
 
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
-        this.x++;
+        this.x += (float)i/10.0;
+        this.y += (float)i/10.0;
+
+        if(this.x>800){
+            this.x=0;
+            this.y=0;
+        }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        graphics.drawRect(this.x,this.y, 50, 50);
+        graphics.drawRect((float) this.x, (float) this.y, 50, 50);
+
     }
 
     public static void main(String[] argv) {
         try {
-            AppGameContainer container = new AppGameContainer(new Maingame("Wintergame"));
+            AppGameContainer container = new AppGameContainer(new Rectangle("Wintergame"));
             container.setDisplayMode(800,600,false);
             container.start();
         } catch (SlickException e) {
