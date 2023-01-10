@@ -1,5 +1,9 @@
 package MovingObjects3;
 import org.newdawn.slick.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MovingObjects extends BasicGame{
     private enum Facing {
         RIGHT,
@@ -7,6 +11,8 @@ public class MovingObjects extends BasicGame{
         UP,
         DOWN
     }
+
+    private List<Actor> actors;
 
     private CircleActor ca1;
 
@@ -16,17 +22,22 @@ public class MovingObjects extends BasicGame{
 
     @Override
     public void init(GameContainer gc) throws SlickException {
-        this.ca1 = new CircleActor(100,100);
+        this.actors = new ArrayList<>();
+        this.actors.add(new CircleActor(100,100));
     }
 
     @Override
     public void update(GameContainer gc, int delta) throws SlickException {
-        this.ca1.update(gc, delta);
+        for (Actor actor : this.actors){
+            actor.update(gc, delta);
+        }
     }
 
     @Override
     public void render(GameContainer gc, Graphics graphics) throws SlickException {
-        this.ca1.render(graphics);
+        for (Actor actor : this.actors){
+            actor.render(graphics);
+        }
     }
 
     public static void main(String[] argv) {
@@ -38,5 +49,4 @@ public class MovingObjects extends BasicGame{
             e.printStackTrace();
         }
     }
-
 }
