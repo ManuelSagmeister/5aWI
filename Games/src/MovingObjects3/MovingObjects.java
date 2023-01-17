@@ -14,7 +14,7 @@ public class MovingObjects extends BasicGame{
 
     private List<Actor> actors;
 
-    private CircleActor ca1;
+    private HTLCircle ca1;
 
     public MovingObjects(String title) {
         super(title);
@@ -23,7 +23,17 @@ public class MovingObjects extends BasicGame{
     @Override
     public void init(GameContainer gc) throws SlickException {
         this.actors = new ArrayList<>();
-        this.actors.add(new CircleActor(100,100));
+        MoveStrategy mr1 = new MoveRight(0,0,0.3);
+        MoveStrategy ml2 = new MoveLeft(600,100, 0.5);
+        MoveStrategy ml3 = new MoveLeft(500, 200, 0.1);
+
+        HTLCircle c1 = new HTLCircle(mr1);
+        HTLCircle c2 = new HTLCircle(ml2);
+        HTLRect r1 = new HTLRect(ml3);
+
+        this.actors.add(c1);
+        this.actors.add(c2);
+        this.actors.add(r1);
     }
 
     @Override
@@ -31,6 +41,7 @@ public class MovingObjects extends BasicGame{
         for (Actor actor : this.actors){
             actor.update(gc, delta);
         }
+
     }
 
     @Override
